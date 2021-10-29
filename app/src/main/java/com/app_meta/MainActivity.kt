@@ -1,8 +1,9 @@
 package com.app_meta
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app_meta.adapter.RepositoryAdapter
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var layoutManager: LinearLayoutManager
     lateinit var githubAdapter: RepositoryAdapter
     lateinit var repos : MutableList<Item>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     recyclerView.apply {
                         setHasFixedSize(true)
                         adapter = githubAdapter
+                        addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayoutManager.VERTICAL))
                     }
                 }
             }
