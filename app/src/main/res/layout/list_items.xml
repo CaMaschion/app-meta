@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TextAppearance.AppCompat"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="0dp"
-    android:orientation="horizontal">
+    android:elevation="@dimen/dimen_12"
+    android:background="@drawable/background_list"
+    android:orientation="vertical">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,7 +17,8 @@
         <ImageView
             android:id="@+id/img_github"
             android:layout_width="@dimen/dimen_70"
-            android:layout_height="@dimen/dimen_70" />
+            android:layout_height="@dimen/dimen_70"
+            android:contentDescription="@string/img_text_repo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,34 +32,39 @@
                 android:id="@+id/rep_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Repositório" />
+                android:textColor="@color/white"
+                tools:text="Repository" />
 
             <TextView
                 android:id="@+id/description_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descrição" />
+                android:textColor="@color/white"
+                tools:text="Describes" />
 
             <TextView
                 android:id="@+id/author_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Autor" />
+                android:textColor="@color/white"
+                tools:text="Author" />
 
             <TextView
                 android:id="@+id/forks_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Forks" />
+                android:textColor="@color/white"
+                tools:text="Forks" />
 
             <TextView
                 android:id="@+id/stars_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Stars" />
+                android:textColor="@color/white"
+                tools:text="Stars" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>
