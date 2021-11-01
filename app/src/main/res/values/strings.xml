@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">app-meta</string>
+    <string name="app_name">Repositórios Github</string>
+    <string name="img_text_repo">imagem do repositório</string>
 </resources>

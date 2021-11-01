@@ -3,7 +3,6 @@ package com.app_meta
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app_meta.adapter.RepositoryAdapter
@@ -18,9 +17,9 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    lateinit var layoutManager: LinearLayoutManager
+    private lateinit var layoutManager: LinearLayoutManager
     lateinit var githubAdapter: RepositoryAdapter
-    lateinit var repos : MutableList<Item>
+    lateinit var repos: MutableList<Item>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         layoutManager = LinearLayoutManager(this@MainActivity)
         recyclerView.layoutManager = layoutManager
-        repos =  arrayListOf()
+        repos = arrayListOf()
 
         getRepos()
     }
@@ -41,7 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         call.enqueue(object : Callback<GithubRepositories> {
 
-            override fun onResponse(call: Call<GithubRepositories>, response: Response<GithubRepositories>) {
+            override fun onResponse(
+                call: Call<GithubRepositories>,
+                response: Response<GithubRepositories>
+            ) {
                 if (response.isSuccessful) {
 
                     repos.addAll(response.body()!!.items)
@@ -49,7 +51,12 @@ class MainActivity : AppCompatActivity() {
                     recyclerView.apply {
                         setHasFixedSize(true)
                         adapter = githubAdapter
-                        addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayoutManager.VERTICAL))
+                        addItemDecoration(
+                            ItemDecorator(
+                                resources.getDimensionPixelOffset(R.dimen.dimen_16),
+                                resources.getDimensionPixelOffset(R.dimen.dimen_10)
+                            )
+                        )
                     }
                 }
             }
