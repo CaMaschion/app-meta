@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TextAppearance.AppCompat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/dimen_12"
+    android:background="@drawable/bg_purple_light"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_12">
+
+        <ImageView
+            android:id="@+id/img_github"
+            android:layout_width="@dimen/dimen_70"
+            android:layout_height="@dimen/dimen_70"
+            android:contentDescription="@string/img_text_repo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_8"
+            android:layout_marginEnd="@dimen/dimen_8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rep_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="Repository" />
+
+            <TextView
+                android:id="@+id/description_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="Describes" />
+
+            <TextView
+                android:id="@+id/author_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="Author" />
+
+            <TextView
+                android:id="@+id/forks_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="Forks" />
+
+            <TextView
+                android:id="@+id/stars_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="Stars" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
