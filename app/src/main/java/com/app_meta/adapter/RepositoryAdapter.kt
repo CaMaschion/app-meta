@@ -14,10 +14,20 @@ class RepositoryAdapter(private val repositoryList: List<Item>) :
     RecyclerView.Adapter<RepositoryAdapter.GithubViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
+        if (viewType > 1000) {
+            val items = LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_items_purple_light, parent, false)
+
+            return GithubViewHolder(items)
+        }
         val items = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_items, parent, false)
+            .inflate(R.layout.list_items_purple_dark, parent, false)
 
         return GithubViewHolder(items)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return repositoryList.elementAt(position).forks_count
     }
 
     override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
@@ -25,7 +35,6 @@ class RepositoryAdapter(private val repositoryList: List<Item>) :
     }
 
     override fun getItemCount() = repositoryList.size
-
 
     class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
