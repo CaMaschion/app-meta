@@ -3,57 +3,61 @@ package com.app_meta.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.recyclerview.widget.RecyclerView
+import com.app_meta.CardCustomView
 import com.app_meta.R
 import com.app_meta.model.Item
-import com.bumptech.glide.Glide
 
-class RepositoryAdapter(private val repositoryList: List<Item>) :
-    RecyclerView.Adapter<RepositoryAdapter.GithubViewHolder>() {
+private const val FORKS = 10000
+private const val FORKS_PURPLE = 1
+private const val FORKS_PURPLE_LIGHT = 2
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
-        if (viewType > 1000) {
-            val items = LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_items_purple_light, parent, false)
+class RepositoryAdapter(
+    repositoryList: List<Item>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-            return GithubViewHolder(items)
+    private val items = mutableListOf<ViewBase>()
+
+    init {
+        repositoryList.forEach {
+            items.add(PurpleViewType(it))
+
+            if (it.forks_count > FORKS){
+                items.add(PurpleLightViewType())
+            }
         }
-        val items = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_items_purple_dark, parent, false)
-
-        return GithubViewHolder(items)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return repositoryList.elementAt(position).forks_count
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        if (viewType == FORKS_PURPLE) {
+            PurpleViewHolder(CardCustomView(parent.context))
+        } else {
+            PurpleLightViewHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_items, parent, false))
+        }
+
+    override fun getItemViewType(position: Int) = items[position].viewType
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is PurpleViewHolder) {
+            holder.bindItem((items[position] as PurpleViewType).item)
+        }
     }
 
-    override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
-        return holder.bindItem(repositoryList[position])
-    }
+    override fun getItemCount() = items.size
 
-    override fun getItemCount() = repositoryList.size
+    class PurpleLightViewHolder(viewColorLight: View) : RecyclerView.ViewHolder(viewColorLight)
 
-    class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val avatar: ImageView = itemView.findViewById(R.id.img_github)
-        private val repository: TextView = itemView.findViewById(R.id.rep_github)
-        private val description: TextView = itemView.findViewById(R.id.description_github)
-        private val author: TextView = itemView.findViewById(R.id.author_github)
-        private val forks: TextView = itemView.findViewById(R.id.forks_github)
-        private val stars: TextView = itemView.findViewById(R.id.stars_github)
+    class PurpleViewHolder(private val view: CardCustomView) : RecyclerView.ViewHolder(view) {
 
         fun bindItem(item: Item) {
-            repository.text = item.name
-            description.text = item.description
-            author.text = item.owner.login
-            forks.text = item.forks_count.toString()
-            stars.text = item.stargazers_count.toString()
-            Glide.with(itemView.context).load(item.owner.avatar_url).circleCrop().into(avatar)
+            view.setup(item)
         }
     }
 }
 
-
+abstract class ViewBase(val viewType: Int)
+class PurpleLightViewType: ViewBase(FORKS_PURPLE_LIGHT)
+class PurpleViewType(val item: Item) : ViewBase(FORKS_PURPLE)
