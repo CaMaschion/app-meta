@@ -25,10 +25,6 @@ class CardCustomView(context: Context) : LinearLayout(context) {
         inflate(context, R.layout.list_items, this)
     }
 
-//    fun setBackground() {
-//        background = ContextCompat.getDrawable(context, R.drawable.bg_purple_light)
-//    }
-
     fun setup(item: Item) {
 
         Glide.with(context).load(item.owner.avatar_url).circleCrop().into(avatar)

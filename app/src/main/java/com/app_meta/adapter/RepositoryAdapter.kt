@@ -3,61 +3,64 @@ package com.app_meta.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.app_meta.CardCustomView
 import com.app_meta.R
 import com.app_meta.model.Item
 
-private const val FORKS = 10000
-private const val FORKS_PURPLE = 1
-private const val FORKS_PURPLE_LIGHT = 2
+private const val FORKS = 1000
+private const val FORKS_VIEW_TYPE = 2
+private const val REPOSITORY_VIEW_TYPE = 1
 
 class RepositoryAdapter(
-    repositoryList: List<Item>) :
+    repositoryList: List<Item>
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items = mutableListOf<ViewBase>()
 
     init {
         repositoryList.forEach {
-            items.add(PurpleViewType(it))
+            items.add(RepositoryViewType(it))
 
-            if (it.forks_count > FORKS){
-                items.add(PurpleLightViewType())
+            if (it.forks_count > FORKS) {
+                items.add(ForksViewType())
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        if (viewType == FORKS_PURPLE) {
-            PurpleViewHolder(CardCustomView(parent.context))
+        if (viewType == REPOSITORY_VIEW_TYPE) {
+            RepositoryViewHolder(CardCustomView(parent.context))
         } else {
-            PurpleLightViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_items, parent, false))
+            ForksViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.forks_item, parent, false)
+            )
         }
 
-    override fun getItemViewType(position: Int) = items[position].viewType
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is PurpleViewHolder) {
-            holder.bindItem((items[position] as PurpleViewType).item)
+        if (holder is RepositoryViewHolder) {
+            holder.bindItem((items[position] as RepositoryViewType).item)
         }
     }
 
     override fun getItemCount() = items.size
 
-    class PurpleLightViewHolder(viewColorLight: View) : RecyclerView.ViewHolder(viewColorLight)
+    override fun getItemViewType(position: Int) = items[position].viewType
 
-    class PurpleViewHolder(private val view: CardCustomView) : RecyclerView.ViewHolder(view) {
+}
 
-        fun bindItem(item: Item) {
-            view.setup(item)
-        }
+class ForksViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+class RepositoryViewHolder(private val view: CardCustomView) : RecyclerView.ViewHolder(view) {
+
+    fun bindItem(item: Item) {
+        view.setup(item)
     }
 }
 
+
 abstract class ViewBase(val viewType: Int)
-class PurpleLightViewType: ViewBase(FORKS_PURPLE_LIGHT)
-class PurpleViewType(val item: Item) : ViewBase(FORKS_PURPLE)
+class ForksViewType : ViewBase(FORKS_VIEW_TYPE)
+class RepositoryViewType(val item: Item) : ViewBase(REPOSITORY_VIEW_TYPE)
