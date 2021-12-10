@@ -34,4 +34,5 @@ class CardCustomView(context: Context) : LinearLayout(context) {
         forks.text = item.forks_count.toString()
         stars.text = item.stargazers_count.toString()
     }
+
 }
