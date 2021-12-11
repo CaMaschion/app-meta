@@ -6,6 +6,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry
 import com.app_meta.model.Author
 import com.app_meta.model.Item
@@ -15,18 +16,22 @@ class CardCustomViewTest {
 
     @Test
     fun cardCustomTest() {
+        //given
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val createRepository = createRepositoryGithub()
         val cardCustomView = CardCustomView(context)
 
+        //when
         cardCustomView.launch()
-        cardCustomView.setup(createRepository)
+        runOnUiThread {
+            cardCustomView.setup(createRepository)
+        }
 
-        onView(withId(R.id.rep_github)).check(matches(withText("Repositório")))
-        onView(withId(R.id.description_github)).check(matches(withText("Descrição")))
-
+        //then
+        onView(withId(R.id.rep_github)).check(matches(withText(createRepository.name)))
+        onView(withId(R.id.description_github)).check(matches(withText(createRepository.description)))
+        onView(withId(R.id.author_github)).check(matches(withText(createRepository.owner.login)))
     }
-
 }
 
 fun View.launch() {
@@ -35,10 +40,12 @@ fun View.launch() {
     }
 }
 
-private fun createRepositoryGithub() = Item(
-    name = "Repositório",
-    description = "Descrição",
-    forks_count = 0,
-    stargazers_count = 0,
-    owner = Author("Login", "Avatar")
+private fun createRepositoryGithub() = Item (
+    name = "Repository",
+    description = "Describes",
+    forks_count = 10,
+    stargazers_count = 5,
+    owner = Author(
+        "Login",
+        "")
 )
