@@ -1,7 +1,6 @@
 ## Github API Application
 
 Aplicativo desenvolvido para listar repositórios do github que utilizam a linguagem kotlin.
-API utilizada https://api.github.com/search/repositories?q=language:Java&sort=stars&page=1
 
 ### Recycler View
 
