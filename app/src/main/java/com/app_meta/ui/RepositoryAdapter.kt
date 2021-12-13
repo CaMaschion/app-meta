@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.app_meta.CardCustomView
+import com.app_meta.ui.CardCustomView
 import com.app_meta.R
 import com.app_meta.model.Item
 

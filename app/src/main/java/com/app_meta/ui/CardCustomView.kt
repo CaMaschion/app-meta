@@ -1,4 +1,4 @@
-package com.app_meta
+package com.app_meta.ui
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -6,7 +6,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import com.app_meta.R
 import com.app_meta.model.Item
 import com.bumptech.glide.Glide
 

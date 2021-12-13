@@ -10,6 +10,8 @@ import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiT
 import androidx.test.platform.app.InstrumentationRegistry
 import com.app_meta.model.Author
 import com.app_meta.model.Item
+import com.app_meta.ui.CardCustomView
+import com.app_meta.ui.MainActivity
 import org.junit.Test
 
 class CardCustomViewTest {
