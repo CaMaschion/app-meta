@@ -1,5 +1,6 @@
 package com.app_meta
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,8 +19,7 @@ class RepositoryViewModel : ViewModel() {
         get() = _repositories
 
     fun fetchRepositories() {
-
-        if (repositories.value?.isEmpty() == true) {
+        if(repositories.value == null || repositories.value?.isEmpty() == true) {
             request()
         }
     }
@@ -42,7 +42,7 @@ class RepositoryViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<GithubRepositories>, t: Throwable) {
-//                Toast.makeText(this, "${t.message}", Toast.LENGTH_SHORT).show()
+                Log.d("ERROR", "onFailure")
             }
         })
     }
