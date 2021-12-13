@@ -1,4 +1,4 @@
-package com.app_meta
+package com.app_meta.ui
 
 import android.util.Log
 import androidx.lifecycle.LiveData

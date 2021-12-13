@@ -1,10 +1,11 @@
-package com.app_meta
+package com.app_meta.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app_meta.R
 import com.app_meta.adapter.RepositoryAdapter
 
 class MainActivity : AppCompatActivity() {
