@@ -13,7 +13,8 @@ private const val FORKS_VIEW_TYPE = 2
 private const val REPOSITORY_VIEW_TYPE = 1
 
 class RepositoryAdapter(
-    repositoryList: List<Item>
+    repositoryList: List<Item>,
+    private val onClick: (String) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -41,7 +42,7 @@ class RepositoryAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is RepositoryViewHolder) {
-            holder.bindItem((items[position] as RepositoryViewType).item)
+            holder.bindItem((items[position] as RepositoryViewType).item, onClick)
         }
     }
 
@@ -55,8 +56,9 @@ class ForksViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 class RepositoryViewHolder(private val view: CardCustomView) : RecyclerView.ViewHolder(view) {
 
-    fun bindItem(item: Item) {
+    fun bindItem(item: Item, onClick: (String) -> Unit) {
         view.setup(item)
+        view.setOnClickListener { onClick(item.description) }
     }
 }
 
