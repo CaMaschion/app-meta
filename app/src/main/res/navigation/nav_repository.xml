@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_repository"
+    app:startDestination="@id/repository_fragment">
+
+    <fragment
+        android:id="@+id/repository_fragment"
+        android:name="com.app_meta.ui.RepositoryFragment"
+        tools:layout="@layout/fragment_repository">
+
+        <action
+            android:id="@+id/repository_fragment_to_contentFragment"
+            app:destination="@id/content_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/content_fragment"
+        android:name="com.app_meta.ui.ContentFragment"
+        tools:layout="@layout/fragment_content">
+
+        <argument
+            android:name="contentArgs"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -36,13 +36,6 @@
                 tools:text="Repository" />
 
             <TextView
-                android:id="@+id/description_github"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                tools:text="Describes" />
-
-            <TextView
                 android:id="@+id/author_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
