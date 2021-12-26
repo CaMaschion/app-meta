@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app_meta.R
 import com.app_meta.adapter.RepositoryAdapter
@@ -16,6 +17,8 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
         setupViewModel()
     }
 
