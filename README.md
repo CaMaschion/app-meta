@@ -21,7 +21,7 @@ Aplicativo desenvolvido para listar repositórios do github que utilizam a lingu
    - [X] ViewModel 
    - [X] LiveData 
    - [X] LifeCycle 
-   - [ ] Navigation
+   - [X] Navigation
 
 ### Persistência
 
