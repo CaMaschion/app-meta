@@ -1,6 +1,6 @@
-package com.app_meta.data
+package com.app_meta.network
 
-import com.app_meta.model.GithubRepositories
+import com.app_meta.network.model.GithubRepositories
 import retrofit2.Call
 import retrofit2.http.GET
 

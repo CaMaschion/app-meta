@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.app_meta.R
 
-class ContentFragment:Fragment (R.layout.fragment_content) {
+class RepositoryContentFragment:Fragment (R.layout.fragment_content) {
 
-    private val args: ContentFragmentArgs by navArgs()
+    private val args: RepositoryContentFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<TextView>(R.id.description_github).text = args.contentArgs

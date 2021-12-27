@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/content_fragment"
-        android:name="com.app_meta.ui.ContentFragment"
+        android:name="com.app_meta.ui.RepositoryContentFragment"
         tools:layout="@layout/fragment_content">
 
         <argument

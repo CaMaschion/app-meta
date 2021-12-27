@@ -1,4 +1,4 @@
-package com.app_meta.ui
+package com.app_meta.ui.recyclerview
 
 import android.graphics.Rect
 import android.view.View

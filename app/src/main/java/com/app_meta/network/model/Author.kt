@@ -1,4 +1,4 @@
-package com.app_meta.model
+package com.app_meta.network.model
 
 data class Author(
     val login: String,

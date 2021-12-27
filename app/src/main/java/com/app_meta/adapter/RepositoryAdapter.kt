@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.app_meta.ui.CardCustomView
+import com.app_meta.ui.widget.CardRepositoryCustomView
 import com.app_meta.R
-import com.app_meta.model.Item
+import com.app_meta.network.model.Item
 
 private const val FORKS = 1000
 private const val FORKS_VIEW_TYPE = 2
@@ -32,7 +32,7 @@ class RepositoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         if (viewType == REPOSITORY_VIEW_TYPE) {
-            RepositoryViewHolder(CardCustomView(parent.context))
+            RepositoryViewHolder(CardRepositoryCustomView(parent.context))
         } else {
             ForksViewHolder(
                 LayoutInflater.from(parent.context)
@@ -54,11 +54,11 @@ class RepositoryAdapter(
 
 class ForksViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-class RepositoryViewHolder(private val view: CardCustomView) : RecyclerView.ViewHolder(view) {
+class RepositoryViewHolder(private val viewRepository: CardRepositoryCustomView) : RecyclerView.ViewHolder(viewRepository) {
 
     fun bindItem(item: Item, onClick: (String) -> Unit) {
-        view.setup(item)
-        view.setOnClickListener { onClick(item.description) }
+        viewRepository.setup(item)
+        viewRepository.setOnClickListener { onClick(item.description) }
     }
 }
 

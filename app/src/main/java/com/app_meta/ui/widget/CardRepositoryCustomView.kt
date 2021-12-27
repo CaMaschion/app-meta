@@ -1,4 +1,4 @@
-package com.app_meta.ui
+package com.app_meta.ui.widget
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.app_meta.R
-import com.app_meta.model.Item
+import com.app_meta.network.model.Item
 import com.bumptech.glide.Glide
 
-class CardCustomView(context: Context) : LinearLayout(context) {
+class CardRepositoryCustomView(context: Context) : LinearLayout(context) {
 
     private val avatar by lazy { findViewById<ImageView>(R.id.img_github) }
     private val repository by lazy { findViewById<TextView>(R.id.rep_github) }
