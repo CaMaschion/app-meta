@@ -8,20 +8,20 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import androidx.test.platform.app.InstrumentationRegistry
-import com.app_meta.model.Author
-import com.app_meta.model.Item
-import com.app_meta.ui.CardCustomView
+import com.app_meta.network.model.Author
+import com.app_meta.network.model.Item
+import com.app_meta.ui.widget.CardRepositoryCustomView
 import com.app_meta.ui.MainActivity
 import org.junit.Test
 
-class CardCustomViewTest {
+class CardRepositoryCustomViewTest {
 
     @Test
     fun cardCustomTest() {
         //given
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val createRepository = createRepositoryGithub()
-        val cardCustomView = CardCustomView(context)
+        val cardCustomView = CardRepositoryCustomView(context)
 
         //when
         cardCustomView.launch()

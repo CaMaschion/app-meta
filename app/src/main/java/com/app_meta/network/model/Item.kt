@@ -1,4 +1,5 @@
-package com.app_meta.model
+package com.app_meta.network.model
+
 
 data class Item(
     val name: String,

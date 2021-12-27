@@ -1,4 +1,4 @@
-package com.app_meta.data
+package com.app_meta.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
