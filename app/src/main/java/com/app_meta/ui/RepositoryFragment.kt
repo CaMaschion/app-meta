@@ -12,7 +12,7 @@ import com.app_meta.adapter.RepositoryAdapter
 import com.app_meta.ui.recyclerview.ItemDecorator
 import com.app_meta.ui.viewmodel.RepositoryViewModel
 
-class RepositoryFragment : Fragment(R.layout.fragment_repository) {
+class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
 
     private val viewModel by lazy { ViewModelProvider(this).get(RepositoryViewModel::class.java) }
     private lateinit var recycler: RecyclerView
@@ -28,12 +28,6 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
         viewModel.fetchRepositories3()
         viewModel.repositories.observe(this){
             recycler.apply {
-
-                recycler.adapter = RepositoryAdapter(it) { content ->
-                    findNavController().navigate(
-                        RepositoryFragmentDirections.repositoryFragmentToContentFragment(content))
-                }
-
                 setHasFixedSize(true)
                 addItemDecoration(
                     ItemDecorator(
@@ -41,6 +35,11 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
                         resources.getDimensionPixelOffset(R.dimen.dimen_10)
                     )
                 )
+
+                recycler.adapter = RepositoryAdapter(it) { content ->
+                    findNavController().navigate(
+                        RepositoryFragmentDirections.repositoryFragmentToContentFragment(content))
+                }
             }
         }
     }

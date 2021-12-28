@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:background="@color/blue_light"
             app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/list_items"
+            tools:listitem="@layout/fragment_card_repository"
             tools:itemCount="4"/>
 
     </FrameLayout>

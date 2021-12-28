@@ -14,14 +14,25 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/author_github"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="Author" />
+
+        <TextView
             android:id="@+id/description_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="italic"
             tools:text="Description" />
+
+        <TextView
+            android:id="@+id/forks_github"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="Forks" />
 
     </LinearLayout>
 

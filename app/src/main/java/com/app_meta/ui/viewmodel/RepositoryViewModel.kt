@@ -64,7 +64,7 @@ class RepositoryViewModel : ViewModel() {
 //        )
 //    }
 
-        fun fetchRepositories3(){
+        fun fetchRepositories3() {
 
         val request = ApiService.buildService(GithubService::class.java)
 

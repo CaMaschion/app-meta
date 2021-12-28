@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/repository_fragment"
         android:name="com.app_meta.ui.RepositoryFragment"
-        tools:layout="@layout/fragment_repository">
+        tools:layout="@layout/fragment_recycler_view">
 
         <action
             android:id="@+id/repository_fragment_to_contentFragment"
@@ -17,12 +17,11 @@
 
     <fragment
         android:id="@+id/content_fragment"
-        android:name="com.app_meta.ui.RepositoryContentFragment"
-        tools:layout="@layout/fragment_content">
-
+        android:name="com.app_meta.ui.RepositoryCardDetailsFragment"
+        tools:layout="@layout/fragment_card_details_repository">
         <argument
-            android:name="contentArgs"
-            app:argType="string" />
+            android:name="details"
+            app:argType="com.app_meta.network.model.Item" />
     </fragment>
 
 </navigation>
