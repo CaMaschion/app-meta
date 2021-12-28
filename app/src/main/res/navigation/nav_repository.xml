@@ -17,12 +17,11 @@
 
     <fragment
         android:id="@+id/content_fragment"
-        android:name="com.app_meta.ui.RepositoryContentFragment"
+        android:name="com.app_meta.ui.RepositoryCardDetailsFragment"
         tools:layout="@layout/fragment_card_details_repository">
-
         <argument
-            android:name="contentArgs"
-            app:argType="string" />
+            android:name="details"
+            app:argType="com.app_meta.network.model.Item" />
     </fragment>
 
 </navigation>

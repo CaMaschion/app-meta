@@ -28,12 +28,6 @@ class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
         viewModel.fetchRepositories3()
         viewModel.repositories.observe(this){
             recycler.apply {
-
-                recycler.adapter = RepositoryAdapter(it) { content ->
-                    findNavController().navigate(
-                        RepositoryFragmentDirections.repositoryFragmentToContentFragment(content))
-                }
-
                 setHasFixedSize(true)
                 addItemDecoration(
                     ItemDecorator(
@@ -41,6 +35,11 @@ class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
                         resources.getDimensionPixelOffset(R.dimen.dimen_10)
                     )
                 )
+
+                recycler.adapter = RepositoryAdapter(it) { content ->
+                    findNavController().navigate(
+                        RepositoryFragmentDirections.repositoryFragmentToContentFragment(content))
+                }
             }
         }
     }
