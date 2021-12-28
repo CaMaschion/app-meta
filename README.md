@@ -25,7 +25,7 @@ Aplicativo desenvolvido para listar repositórios do github que utilizam a lingu
 
 ### Persistência
 
-   - [ ] InMemory
-   - [ ] Shared Preferences
+   - [X] InMemory
+   - [X] Shared Preferences
    - [ ] Room
 
