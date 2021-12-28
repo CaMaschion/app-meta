@@ -21,7 +21,7 @@ class CardRepositoryCustomView(context: Context) : LinearLayout(context) {
     init {
         orientation = VERTICAL
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        inflate(context, R.layout.list_items, this)
+        inflate(context, R.layout.fragment_card_repository, this)
     }
 
     fun setup(item: Item) {

@@ -1,6 +1,11 @@
 package com.app_meta.network.model
 
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Author(
-    val login: String,
-    val avatar_url: String
-)
+    @SerializedName("login") val login: String,
+    @SerializedName("avatar_url") val avatar_url: String
+) : Parcelable

@@ -1,10 +1,14 @@
 package com.app_meta.network.model
 
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Item(
-    val name: String,
-    val description: String,
-    val forks_count: Int,
-    val stargazers_count: Int,
-    var owner: Author
-)
+    @SerializedName("name") val name: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("forks_count") val forks_count: Int,
+    @SerializedName("stargazers_count") val stargazers_count: Int,
+    @SerializedName("owner") var owner: Author
+) : Parcelable

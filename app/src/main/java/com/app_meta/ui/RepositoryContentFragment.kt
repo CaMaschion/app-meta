@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.app_meta.R
 
-class RepositoryContentFragment:Fragment (R.layout.fragment_content) {
+class RepositoryContentFragment:Fragment (R.layout.fragment_card_details_repository) {
 
     private val args: RepositoryContentFragmentArgs by navArgs()
 

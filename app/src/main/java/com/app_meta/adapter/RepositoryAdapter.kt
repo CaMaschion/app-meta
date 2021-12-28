@@ -14,7 +14,7 @@ private const val REPOSITORY_VIEW_TYPE = 1
 
 class RepositoryAdapter(
     repositoryList: List<Item>,
-    private val onClick: (String) -> Unit
+    private val onClick: (Item) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -56,9 +56,9 @@ class ForksViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 class RepositoryViewHolder(private val viewRepository: CardRepositoryCustomView) : RecyclerView.ViewHolder(viewRepository) {
 
-    fun bindItem(item: Item, onClick: (String) -> Unit) {
+    fun bindItem(item: Item, onClick: (Item) -> Unit) {
         viewRepository.setup(item)
-        viewRepository.setOnClickListener { onClick(item.description) }
+        viewRepository.setOnClickListener { onClick(item)}
     }
 }
 

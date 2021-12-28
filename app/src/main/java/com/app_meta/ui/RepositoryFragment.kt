@@ -12,7 +12,7 @@ import com.app_meta.adapter.RepositoryAdapter
 import com.app_meta.ui.recyclerview.ItemDecorator
 import com.app_meta.ui.viewmodel.RepositoryViewModel
 
-class RepositoryFragment : Fragment(R.layout.fragment_repository) {
+class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
 
     private val viewModel by lazy { ViewModelProvider(this).get(RepositoryViewModel::class.java) }
     private lateinit var recycler: RecyclerView
