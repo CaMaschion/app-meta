@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.app_meta.extension.doRequest
 import com.app_meta.network.ApiService
 import com.app_meta.network.GithubService
 import com.app_meta.network.cache.CacheLocal
@@ -21,36 +22,36 @@ class RepositoryViewModel : ViewModel() {
     val repositories: LiveData<List<Item>>
         get() = _repositories
 
-    fun fetchRepositories() {
-
-        val request = ApiService.buildService(GithubService::class.java)
-        val call = request.getRepositories()
-
-        if(CacheLocal.repository.containsKey(REPOSITORY_KEY)){
-            _repositories.postValue(CacheLocal.repository[REPOSITORY_KEY]?.items)
-        } else {
-            call.enqueue(object : Callback<GithubRepositories> {
-
-                override fun onResponse(
-                    call: Call<GithubRepositories>,
-                    response: Response<GithubRepositories>
-                ) {
-                    if (response.isSuccessful) {
-                        CacheLocal.repository[REPOSITORY_KEY] = response.body()!!
-
-                        response.body()?.items.let {
-                            _repositories.postValue(it)
-                            Log.d(">>>>>>", "Hello")
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<GithubRepositories>, t: Throwable) {
-                    Log.d("ERROR", "Error")
-                }
-            })
-        }
-    }
+//    fun fetchRepositories() {
+//
+//        val request = ApiService.buildService(GithubService::class.java)
+//        val call = request.getRepositories()
+//
+//        if(CacheLocal.repository.containsKey(REPOSITORY_KEY)){
+//            _repositories.postValue(CacheLocal.repository[REPOSITORY_KEY]?.items)
+//        } else {
+//            call.enqueue(object : Callback<GithubRepositories> {
+//
+//                override fun onResponse(
+//                    call: Call<GithubRepositories>,
+//                    response: Response<GithubRepositories>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        CacheLocal.repository[REPOSITORY_KEY] = response.body()!!
+//
+//                        response.body()?.items.let {
+//                            _repositories.postValue(it)
+//                            Log.d(">>>>>>", "Hello")
+//                        }
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<GithubRepositories>, t: Throwable) {
+//                    Log.d("ERROR", "Error")
+//                }
+//            })
+//        }
+//    }
 
 //    fun fetchRepositories2(){
 //
@@ -62,4 +63,15 @@ class RepositoryViewModel : ViewModel() {
 //            onSuccess = { _repositories.postValue(it.items) }
 //        )
 //    }
+
+        fun fetchRepositories3(){
+
+        val request = ApiService.buildService(GithubService::class.java)
+
+        request.getRepositories().doRequest(
+            REPOSITORY_KEY,
+            GithubRepositories::class.java,
+            onSuccess = { _repositories.postValue(it.items) }
+        )
+    }
 }
