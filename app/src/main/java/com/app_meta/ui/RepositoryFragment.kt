@@ -25,7 +25,7 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun setupViewModel() {
-        viewModel.fetchRepositories()
+        viewModel.fetchRepositories3()
         viewModel.repositories.observe(this){
             recycler.apply {
 
