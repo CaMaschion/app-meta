@@ -22,25 +22,29 @@ class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
         recycler = view.findViewById(R.id.recycler_view)
         recycler.layoutManager = LinearLayoutManager(context)
         setupViewModel()
+        decoratorRecyclerView()
     }
 
     private fun setupViewModel() {
         viewModel.fetchRepositories3()
         viewModel.repositories.observe(this){
-            recycler.apply {
-                setHasFixedSize(true)
-                addItemDecoration(
-                    ItemDecorator(
-                        resources.getDimensionPixelOffset(R.dimen.dimen_16),
-                        resources.getDimensionPixelOffset(R.dimen.dimen_10)
-                    )
-                )
 
                 recycler.adapter = RepositoryAdapter(it) { content ->
                     findNavController().navigate(
                         RepositoryFragmentDirections.repositoryFragmentToContentFragment(content))
                 }
             }
+    }
+
+    private fun decoratorRecyclerView() {
+        recycler.apply {
+            setHasFixedSize(true)
+            addItemDecoration(
+                ItemDecorator(
+                    resources.getDimensionPixelOffset(R.dimen.dimen_16),
+                    resources.getDimensionPixelOffset(R.dimen.dimen_10)
+                )
+            )
         }
     }
 }
