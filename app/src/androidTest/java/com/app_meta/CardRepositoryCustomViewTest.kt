@@ -45,8 +45,8 @@ fun View.launch() {
 private fun createRepositoryGithub() = Item (
     name = "Repository",
     description = "Describes",
-    forks_count = 10,
-    stargazers_count = 5,
+    forksCount = 10,
+    stargazersCount = 5,
     owner = Author(
         "Login",
         "")

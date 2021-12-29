@@ -3,19 +3,26 @@ package com.app_meta.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app_meta.R
 import com.app_meta.adapter.RepositoryAdapter
+import com.app_meta.database.GithubRepositoriesRoomDatabase
 import com.app_meta.ui.recyclerview.ItemDecorator
-import com.app_meta.ui.viewmodel.RepositoryViewModel
+import com.app_meta.ui.viewmodel.GithubRepositoryViewModel
+import com.app_meta.ui.viewmodel.GithubRepositoryViewModelFactory
 
 class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
 
-    private val viewModel by lazy { ViewModelProvider(this).get(RepositoryViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this).get(GithubRepositoryViewModel::class.java) }
     private lateinit var recycler: RecyclerView
+    private val GithubRepositoryViewModel: GithubRepositoryViewModel by viewModels {
+        GithubRepositoryViewModelFactory(GithubRepositoriesRoomDatabase.getDatabase(requireContext()).githubRepositoriesDao())
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,7 +33,7 @@ class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
     }
 
     private fun setupViewModel() {
-        viewModel.fetchRepositories3()
+        viewModel.fetchRepositories4()
         viewModel.repositories.observe(this){
 
                 recycler.adapter = RepositoryAdapter(it) { content ->

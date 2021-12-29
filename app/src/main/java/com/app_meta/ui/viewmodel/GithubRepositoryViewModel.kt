@@ -1,31 +1,29 @@
 package com.app_meta.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.app_meta.dao.GithubRepositoriesDao
 import com.app_meta.extension.doRequest
 import com.app_meta.network.ApiService
 import com.app_meta.network.GithubService
-import com.app_meta.network.cache.CacheLocal
 import com.app_meta.network.model.GithubRepositories
 import com.app_meta.network.model.Item
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.app_meta.network.model.RepositoryEntity
 
 const val REPOSITORY_KEY = "repository_key"
 
-class RepositoryViewModel : ViewModel() {
+class GithubRepositoryViewModel(private val dao: GithubRepositoriesDao) : ViewModel() {
+
+        private val request = ApiService.buildService(GithubService::class.java)
+        val call = request.getRepositories()
 
     private val _repositories = MutableLiveData<List<Item>>()
     val repositories: LiveData<List<Item>>
         get() = _repositories
 
 //    fun fetchRepositories() {
-//
-//        val request = ApiService.buildService(GithubService::class.java)
-//        val call = request.getRepositories()
 //
 //        if(CacheLocal.repository.containsKey(REPOSITORY_KEY)){
 //            _repositories.postValue(CacheLocal.repository[REPOSITORY_KEY]?.items)
@@ -55,8 +53,6 @@ class RepositoryViewModel : ViewModel() {
 
 //    fun fetchRepositories2(){
 //
-//        val request = ApiService.buildService(GithubService::class.java)
-//
 //        request.getRepositories().makeAsyncOperation(
 //            REPOSITORY_KEY,
 //            CacheLocal.repository,
@@ -64,14 +60,42 @@ class RepositoryViewModel : ViewModel() {
 //        )
 //    }
 
-        fun fetchRepositories3() {
+//    fun fetchRepositories3() {
+//
+//        request.getRepositories().doRequest(
+//            REPOSITORY_KEY,
+//            GithubRepositories::class.java,
+//            onSuccess = { _repositories.postValue(it.items) }
+//        )
+//    }
 
-        val request = ApiService.buildService(GithubService::class.java)
+    fun fetchRepositories4() {
 
-        request.getRepositories().doRequest(
-            REPOSITORY_KEY,
-            GithubRepositories::class.java,
-            onSuccess = { _repositories.postValue(it.items) }
-        )
+        val githubRepository = dao.getRepositoryEntity()
+
+        if (githubRepository.isEmpty()) {
+            request.getRepositories().doRequest(
+                REPOSITORY_KEY,
+                GithubRepositories::class.java,
+                onSuccess = {
+                    dao.insert(it.items.map(::RepositoryEntity))
+                    _repositories.postValue(it.items)
+                }
+            )
+        } else {
+            _repositories.postValue(githubRepository.map(::Item))
+        }
+    }
+
+}
+
+class GithubRepositoryViewModelFactory(private val dao: GithubRepositoriesDao) :
+    ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(GithubRepositoryViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return GithubRepositoryViewModel(dao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

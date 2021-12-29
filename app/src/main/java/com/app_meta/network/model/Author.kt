@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Author(
     @SerializedName("login") val login: String,
-    @SerializedName("avatar_url") val avatar_url: String
+    @SerializedName("avatar_url") val avatarUrl: String
 ) : Parcelable

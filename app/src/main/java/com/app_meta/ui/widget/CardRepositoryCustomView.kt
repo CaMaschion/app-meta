@@ -24,9 +24,9 @@ class CardRepositoryCustomView(context: Context) : LinearLayout(context) {
 
     fun setup(item: Item) {
 
-        Glide.with(context).load(item.owner.avatar_url).circleCrop().into(avatar)
+        Glide.with(context).load(item.owner.avatarUrl).circleCrop().into(avatar)
         repository.text = item.name
-        stars.text = item.stargazers_count.toString()
+        stars.text = item.stargazersCount.toString()
     }
 
 }
