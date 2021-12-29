@@ -24,7 +24,7 @@ abstract class GithubRepositoriesRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     GithubRepositoriesRoomDatabase::class.java,
                     "github_repositories_database"
-                ).build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
                 // return instance
                 instance
