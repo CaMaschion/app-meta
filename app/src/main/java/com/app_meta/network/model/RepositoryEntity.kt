@@ -9,14 +9,14 @@ class RepositoryEntity(
     val name: String,
     val avatar: String,
     val owner: String,
-    val description: String,
+    val description: String?,
     val stargazersCount: Int,
     val forksCount: Int
 ) {
     constructor(item: Item) : this(
         name = item.name,
         avatar = item.owner.avatarUrl,
-        description= item.description,
+        description = item.description.toString(),
         stargazersCount = item.stargazersCount,
         forksCount = item.forksCount,
         owner = item.owner.toString()
