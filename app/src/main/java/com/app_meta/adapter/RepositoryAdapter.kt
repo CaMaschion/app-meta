@@ -24,7 +24,7 @@ class RepositoryAdapter(
         repositoryList.forEach {
             items.add(RepositoryViewType(it))
 
-            if (it.forks_count > FORKS) {
+            if (it.forksCount > FORKS) {
                 items.add(ForksViewType())
             }
         }

@@ -14,7 +14,7 @@ class RepositoryCardDetailsFragment:Fragment (R.layout.fragment_card_details_rep
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<TextView>(R.id.author_github).text = args.details.owner.login
         view.findViewById<TextView>(R.id.description_github).text = args.details.description
-        view.findViewById<TextView>(R.id.forks_github).text = args.details.forks_count.toString()
+        view.findViewById<TextView>(R.id.forks_github).text = args.details.forksCount.toString()
     }
 
 }
