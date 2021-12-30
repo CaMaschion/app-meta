@@ -19,6 +19,6 @@ class RepositoryEntity(
         description = item.description.toString(),
         stargazersCount = item.stargazersCount,
         forksCount = item.forksCount,
-        owner = item.owner.toString()
+        owner = item.owner.login
     )
 }

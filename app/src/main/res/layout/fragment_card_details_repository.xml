@@ -1,37 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/purple_500"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/purple_500">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_24"
         android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_24"
         android:layout_marginEnd="@dimen/dimen_8"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_purple_dark"
+            android:padding="@dimen/dimen_12"
+            android:text="@string/txt_author"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/author_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12"
+            android:textAlignment="center"
             android:textColor="@color/white"
+            android:textSize="16sp"
             tools:text="Author" />
+
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/bg_purple_dark"
+            android:padding="@dimen/dimen_12"
+            android:text="@string/txt_description"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/description_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12"
+            android:textAlignment="center"
+            android:layout_marginStart="@dimen/dimen_12"
+            android:layout_marginEnd="@dimen/dimen_12"
             android:textColor="@color/white"
+            android:textSize="16sp"
             tools:text="Description" />
 
         <TextView
-            android:id="@+id/forks_github"
+            android:id="@+id/text_fork"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/bg_purple_dark"
+            android:padding="@dimen/dimen_12"
+            android:text="@string/txt_forks"
+            android:textAlignment="center"
             android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/forks_github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_12"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/icon_fork"
             tools:text="Forks" />
 
     </LinearLayout>
