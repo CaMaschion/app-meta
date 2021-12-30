@@ -2,4 +2,6 @@
     <string name="app_name">Repositórios Github</string>
     <string name="img_text_repo">imagem do repositório</string>
     <string name="forks_text">Este repositório tem mais de 1.000 forks</string>
+
+    <string name="repository_name">Repositório:</string>
 </resources>
