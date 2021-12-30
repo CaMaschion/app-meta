@@ -23,7 +23,6 @@ class RepositoryFragment : Fragment(R.layout.fragment_recycler_view) {
         GithubRepositoryViewModelFactory(GithubRepositoriesRoomDatabase.getDatabase(requireContext()).githubRepositoriesDao())
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler = view.findViewById(R.id.recycler_view)

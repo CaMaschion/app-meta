@@ -12,5 +12,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main){
         super.onCreate(savedInstanceState)
 
         CacheLocalDisk.initDatabase(this)
+
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setLogo(R.drawable.icon_github)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
     }
 }
