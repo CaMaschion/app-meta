@@ -4,7 +4,7 @@
     <string name="forks_text">Este repositório tem mais de 1.000 forks</string>
 
     <string name="repository_name">Repositório:</string>
-    <string name="txt_author">Author</string>
+    <string name="txt_author">Autor do Reposiório</string>
     <string name="txt_description">Descrição do Reposiório</string>
     <string name="txt_forks">Forks</string>
 </resources>
